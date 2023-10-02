@@ -35,6 +35,16 @@ namespace dotnetjquery.Controllers
         {
             return num1 / num2;
         }
+        [HttpPost]
+        public CalculateModel CalculateNumber(int num1, int num2, string msgs)
+        {
+            CalculateModel calculateModel= new CalculateModel();
+            calculateModel.Add = num1+ num2;
+            calculateModel.Subtract = num1 - num2;
+            calculateModel.Mul= num1 * num2;
+            calculateModel.Division = num1 / num2;
+            return calculateModel;
+        }
         public IActionResult Privacy()
         {
             return View();

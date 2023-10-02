@@ -27,27 +27,15 @@
     <div class="col-md-3"></div>
     <div class="col-md-9">
         <a href="javascript:void(0)" id="sumbtn" onclick="Sum()" class="btn btn-success">SUM</a>
+        <a href="javascript:void(0)" id="subbtn" onclick="Sub()" class="btn btn-success">SUBTRACT</a>
+        <a href="javascript:void(0)" id="mulbtn" onclick="Mul()" class="btn btn-success">MULTIPLY</a>
+        <a href="javascript:void(0)" id="divbtn" onclick="Div()" class="btn btn-success">DIVISION</a>
+        <a href="javascript:void(0)" id="divbtn" onclick="Calc()" class="btn btn-success">Calculate</a>
+
     </div>
 </div>
 
-<div class="row mb-3">
-    <div class="col-md-3"></div>
-    <div class="col-md-9">
-        <a href="javascript:void(0)" id="subbtn" onclick="Sub()" class="btn btn-success">SUBTRACT</a>
-    </div>
-</div>
-<div class="row mb-3">
-    <div class="col-md-3"></div>
-    <div class="col-md-9">
-        <a href="javascript:void(0)" id="mulbtn" onclick="Mul()" class="btn btn-success">MULTIPLY</a>
-    </div>
-</div>
-<div class="row mb-3">
-    <div class="col-md-3"></div>
-    <div class="col-md-9">
-        <a href="javascript:void(0)" id="divbtn" onclick="Div()" class="btn btn-success">DIVISION</a>
-    </div>
-</div>
+
 <div class="row mb-3">
     <div class="col-md-3"></div>
     <div class="col-md-9" style="font-weight:bold" id="divResult"> </div>
@@ -61,6 +49,24 @@
     //    console.log("Hello World!");
     //});
 
+    function Calc(){
+        var x = parseInt($("#txtval1").val());
+        var y = parseInt($("#txtval2").val());
+        
+        $.ajax({
+            type:"POST",
+            url: "@Url.Action("CalculateNumber","Home")",
+            data: {num1: x , num2:y },
+            dataType: "text",
+            success: function (msg) {
+                $("#divResult").html(msg);
+            },
+            error: function (req,status, error) {
+
+            }
+        });
+    }
+
     function Sum(){
         var x = parseInt($("#txtval1").val());
         var y = parseInt($("#txtval2").val());
@@ -68,14 +74,14 @@
         $.ajax({
             type: "POST",
             url: "@Url.Action("Add", "Home")",
-            data: { num1: x, num2: y },
-            dataType: "text",
-              success: function (msg) {
-                alert(msg);
-                $("#divResult").html(msg);
+            data: { num1: x, num2: y , "msgs": "Test"},
+            dataType: "json",
+              success: function (result) {
+                $("#divResult").html(result);
             },
             error: function (req, status, error) {
-                console.log(error)
+                $("#divResult").html(error);
+
             }
         })
 

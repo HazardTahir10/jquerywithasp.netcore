@@ -60,44 +60,90 @@
     //$(document).ready(function () {
     //    console.log("Hello World!");
     //});
+
     function Sum(){
         var x = parseInt($("#txtval1").val());
         var y = parseInt($("#txtval2").val());
-        var result = $("#divResult");
 
-        var z = x + y;
-        result.text(z);
-        $(sumbtn).text("Added Value");
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Add", "Home")",
+            data: { num1: x, num2: y },
+            dataType: "text",
+              success: function (msg) {
+                alert(msg);
+                $("#divResult").html(msg);
+            },
+            error: function (req, status, error) {
+                console.log(error)
+            }
+        })
+
+
+        //var result = $("#divResult");
+        //var z = x + y;
+        //result.text(z);
+        //$(sumbtn).text("Added Value");
 
 
     }
+
+
+
     function Sub() {
         var x = parseInt($("#txtval1").val());
         var y = parseInt($("#txtval2").val());
-        var result = $("#divResult");
-
-        var z = x - y;
-        result.text(z);
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Sub", "Home")",
+            data: { num1: x, num2: y },
+            dataType: "text",
+            success: function (msg) {
+                alert(msg);
+                $("#divResult").html(msg);
+            },
+            error: function (req, status, error) {
+                console.log(error)
+            }
+        })
 
     }
 
     function Mul(){
         var x = parseInt($("#txtval1").val());
         var y = parseInt($("#txtval2").val());
-        var result = $("#divResult");
-
-        var z = x * y;
-        result.text(z);
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Mul", "Home")",
+            data: { num1: x, num2: y },
+            dataType: "text",
+            success: function (msg) {
+                alert(msg);
+                $("#divResult").html(msg);
+            },
+            error: function (req, status, error) {
+                console.log(error)
+            }
+        })
 
     }
 
     function Div(){
         var x = parseInt($("#txtval1").val());
         var y = parseInt($("#txtval2").val());
-        var result = $("#divResult");
-
-        var z = x / y;
-        result.text(z);
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Div", "Home")",
+            data: { num1: x, num2: y },
+            dataType: "text",
+            success: function (msg) {
+                alert(msg);
+                $("#divResult").html(msg);
+            },
+            error: function (req, status, error) {
+                console.log(error)
+            }
+        })
  
     }
 

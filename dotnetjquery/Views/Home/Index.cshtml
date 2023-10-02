@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-3">First Value</div>
+    <div class="col-md-9">
+        <input type="text" id="txtval1" class="form-control"/>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-3">Second Value</div>
+    <div class="col-md-9">
+        <input type="text" id="txtval2" class="form-control" />
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+        <a href="javascript:void(0)" id="sumbtn" onclick="Sum()" class="btn btn-success">SUM</a>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+        <a href="javascript:void(0)" id="subbtn" onclick="Sub()" class="btn btn-success">SUBTRACT</a>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+        <a href="javascript:void(0)" id="mulbtn" onclick="Mul()" class="btn btn-success">MULTIPLY</a>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-md-3"></div>
+    <div class="col-md-9">
+        <a href="javascript:void(0)" id="divbtn" onclick="Div()" class="btn btn-success">DIVISION</a>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-md-3"></div>
+    <div class="col-md-9" style="font-weight:bold" id="divResult"> </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+    //    console.log("Hello World!");
+    //});
+    function Sum(){
+        var x = parseInt($("#txtval1").val());
+        var y = parseInt($("#txtval2").val());
+        var result = $("#divResult");
+
+        var z = x + y;
+        result.text(z);
+        $(sumbtn).text("Added Value");
+
+
+    }
+    function Sub() {
+        var x = parseInt($("#txtval1").val());
+        var y = parseInt($("#txtval2").val());
+        var result = $("#divResult");
+
+        var z = x - y;
+        result.text(z);
+
+    }
+
+    function Mul(){
+        var x = parseInt($("#txtval1").val());
+        var y = parseInt($("#txtval2").val());
+        var result = $("#divResult");
+
+        var z = x * y;
+        result.text(z);
+
+    }
+
+    function Div(){
+        var x = parseInt($("#txtval1").val());
+        var y = parseInt($("#txtval2").val());
+        var result = $("#divResult");
+
+        var z = x / y;
+        result.text(z);
+ 
+    }
+
+
+ 
+</script>
+
+
+
